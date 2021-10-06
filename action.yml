@@ -1,0 +1,72 @@
+name: vault-aws-auth
+description: 'Returns generated AWS credentials from Vault'
+inputs:
+  aws-region:
+    description: 'The AWS region'
+    required: false
+    default: us-east-1
+  vault-address:
+    description: 'The address for your instance of Vault'
+    required: true
+  vault-path:
+    description: 'The path in Vault where the secrets engine generates AWS credentials'
+    required: true
+  role-id:
+    description: 'The secret containing the role Id for the Vault App Role'
+    required: true
+  secret-id:
+    description: 'The secret containing secret Id for the Vault App Role'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v2
+
+    - name: Import Secrets
+      uses: hashicorp/vault-action@v2.3.1
+      id: secrets
+      with:
+        url: ${{ inputs.vault-address }}
+        method: approle
+        roleId: ${{ inputs.role-id }}
+        secretId: ${{ inputs.secret-id }}
+        exportEnv: false
+        secrets: |
+          ${{ inputs.vault-path }} access_key | AWS_ACCESS_KEY_ID ;
+          ${{ inputs.vault-path }} secret_key | AWS_SECRET_ACCESS_KEY
+
+    - name: Waiting until AWS credentials are valid
+      run: |
+        echo "Checking if credentials are valid..."
+
+        retries=12
+        while ((retries > 0)); do
+          echo "${retries} left..."
+          aws sts get-caller-identity >/dev/null 2>/dev/null && break
+
+          echo "... let's wait 5 seconds and retry"
+          sleep 5
+          ((retries --))
+        done
+
+        if ((retries == 0 )); then
+          echo "The AWS Credentials never started working even after 1 min, so exiting..."
+          echo "Make sure you have added the permission 'iam:getUser' to the policy."
+          exit 1
+        fi
+      shell: bash
+      env:
+        AWS_ACCESS_KEY_ID: ${{ steps.secrets.outputs.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ steps.secrets.outputs.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ inputs.aws-region }}
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ steps.secrets.outputs.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ steps.secrets.outputs.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ inputs.aws-region }}
+
+    - run: aws sts get-caller-identity >/dev/null 2>/dev/null
+      shell: bash
