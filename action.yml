@@ -21,7 +21,7 @@ inputs:
     description: 'The role wanting to be assumed in AWS'
     required: false
   role-duration-seconds:
-    description: 'The duration in seconds that the role remains active'
+    description: 'The duration in seconds that the role remains active (default: 15 minutes)'
     required: false
     default: 900
 
