@@ -17,6 +17,13 @@ inputs:
   secret-id:
     description: 'The secret containing secret Id for the Vault App Role'
     required: true
+  role-to-assume:
+    description: 'The role wanting to be assumed in AWS'
+    required: false
+  role-duration-seconds:
+    description: 'The duration in seconds that the role remains active'
+    required: false
+    default: 900
 
 runs:
   using: 'composite'
@@ -67,6 +74,7 @@ runs:
         aws-access-key-id: ${{ steps.secrets.outputs.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ steps.secrets.outputs.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ inputs.aws-region }}
+        role-skip-session-tagging: true
 
     - run: aws sts get-caller-identity >/dev/null 2>/dev/null
       shell: bash
