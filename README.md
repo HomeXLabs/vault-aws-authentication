@@ -19,7 +19,7 @@ This repository contains a github action that authenticates into Vault using an 
 | secret-id | ✓ | The secret containing secret Id for the Vault App Role |  |
 | vault-path | ✓ | The path in Vault where the secrets engine generates AWS credentials |  |
 | role-to-assume | ✘ | The role wanting to be assumed in AWS' |  |
-| role-duration-seconds | ✘ | The duration in seconds that the role remains active | `900` |
+| role-duration-seconds | ✘ | The duration in seconds that the role remains active (default: 15 minutes) | `900` |
 
 ## Results
 
