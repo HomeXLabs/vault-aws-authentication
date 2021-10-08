@@ -42,11 +42,12 @@ runs:
 
         retries=12
         while ((retries > 0)); do
-          echo "${retries} left..."
+          echo "${retries} attempts left..."
+          sleep 5
+          
           aws sts get-caller-identity >/dev/null 2>/dev/null && break
 
-          echo "... let's wait 5 seconds and retry"
-          sleep 5
+          echo "Credentials not yet valid, let's wait 5 seconds and retry."
           ((retries --))
         done
 
@@ -54,6 +55,8 @@ runs:
           echo "The AWS Credentials never started working even after 1 min, so exiting..."
           echo "Make sure you have added the permission 'iam:getUser' to the policy."
           exit 1
+        else
+          echo "AWS Credentials are valid."
         fi
       shell: bash
       env:
