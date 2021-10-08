@@ -39,8 +39,8 @@ runs:
     - name: Waiting until AWS credentials are valid
       run: |
         echo "Checking if credentials are valid..."
-
         retries=12
+
         while ((retries > 0)); do
           echo "${retries} attempts left..."
           sleep 5
@@ -58,6 +58,7 @@ runs:
         else
           echo "AWS Credentials are valid."
         fi
+
       shell: bash
       env:
         AWS_ACCESS_KEY_ID: ${{ steps.secrets.outputs.AWS_ACCESS_KEY_ID }}
