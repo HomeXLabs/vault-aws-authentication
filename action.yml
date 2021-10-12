@@ -1,4 +1,4 @@
-name: vault-aws-auth
+name: 'Vault AWS Authentication'
 description: 'Returns generated AWS credentials from Vault'
 inputs:
   aws-region:
