@@ -89,3 +89,7 @@ runs:
 
     - run: aws sts get-caller-identity >/dev/null 2>/dev/null
       shell: bash
+
+branding:
+  icon: unlock
+  color: green
