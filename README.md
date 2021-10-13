@@ -1,6 +1,6 @@
 # HomeX Vault-AWS Action
 
-This repository contains a github action that authenticates into Vault using an App Role to return generated AWS credentials. 
+This repository contains a github action that authenticates into Vault using an App Role to return generated AWS credentials and set the profile in the environment for AWS CLI/SDKs to use. 
 
 ## Prerequisites 
 
