@@ -28,7 +28,7 @@ inputs:
   role-skip-session-tagging:
     description: 'Skip session tagging during role assumption'
     required: false
-    default: false
+    default: true
 
 runs:
   using: 'composite'
