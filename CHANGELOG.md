@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/HomeXLabs/vault-aws-authentication/compare/v1.0.0...v1.1.0) (2021-11-04)
+
+
+### Features
+
+* set aws secrets from vault as outputs ([#9](https://www.github.com/HomeXLabs/vault-aws-authentication/issues/9)) ([1640eb4](https://www.github.com/HomeXLabs/vault-aws-authentication/commit/1640eb4d12673abf172796faca8e91534c8a5c71))
+* update version.txt to correct value ([#11](https://www.github.com/HomeXLabs/vault-aws-authentication/issues/11)) ([acc6370](https://www.github.com/HomeXLabs/vault-aws-authentication/commit/acc63707add329f4a185f321311fbec0365a1dfb))
+
 ## 1.1.2 (2021-10-08)
 
 
