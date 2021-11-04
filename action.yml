@@ -75,6 +75,7 @@ runs:
       env:
         AWS_ACCESS_KEY_ID: ${{ steps.secrets.outputs.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ steps.secrets.outputs.AWS_SECRET_ACCESS_KEY }}
+        AWS_SESSION_TOKEN: ""
         AWS_REGION: ${{ inputs.aws-region }}
 
     - name: Configure AWS credentials
@@ -89,6 +90,17 @@ runs:
 
     - run: aws sts get-caller-identity >/dev/null 2>/dev/null
       shell: bash
+
+outputs:
+  aws-access-key-id:
+    description: "AWS Access Key ID"
+    value: ${{ steps.secrets.outputs.AWS_ACCESS_KEY_ID }}
+  aws-secret-access-key:
+    description: "AWS Secret Access Key"
+    value: ${{ steps.secrets.outputs.AWS_SECRET_ACCESS_KEY }}
+  aws-region:
+    description: "AWS Region"
+    value: ${{ inputs.aws-region }}
 
 branding:
   icon: unlock
