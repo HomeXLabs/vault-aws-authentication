@@ -29,13 +29,15 @@ The `configure-aws-credentials` action will set environment variables containing
 
 ## Example Use
 
-Add the following step to your workflow:
+The latest version of the action can be found on [the marketplace](https://github.com/marketplace/actions/vault-aws-authentication) or use @main.
+
+Add the following step to your workflow.
 ```
 
     - name: Vault-AWS Authentication
-      uses: HomeXLabs/vault-aws-auth@v1
+      uses: HomeXLabs/vault-aws-auth@v1.1.2
       with:
-        aws-region: us-east-2
+        aws-region: us-east-1
         vault-address: https://vault.mycompany.com:8200
         role-id: ${{ secrets.VAULT_ROLE_ID }}
         secret-id: ${{ secrets.VAULT_SECRET_ID }}
