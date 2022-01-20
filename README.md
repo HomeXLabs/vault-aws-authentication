@@ -35,7 +35,7 @@ Add the following step to your workflow.
 ```
 
     - name: Vault-AWS Authentication
-      uses: HomeXLabs/vault-aws-auth@v1.1.2
+      uses: HomeXLabs/vault-aws-authentication@v1.1.2
       with:
         aws-region: us-east-1
         vault-address: https://vault.mycompany.com:8200
