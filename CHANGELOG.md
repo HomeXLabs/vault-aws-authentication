@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.1](https://www.github.com/HomeXLabs/vault-aws-authentication/compare/v1.1.0...v1.1.1) (2022-02-03)
+
+
+### Bug Fixes
+
+* add retry to configure credentials step ([#16](https://www.github.com/HomeXLabs/vault-aws-authentication/issues/16)) ([dc6a387](https://www.github.com/HomeXLabs/vault-aws-authentication/commit/dc6a3874e05ab79136337a30427a57c27cecd453))
+
 ## [1.1.0](https://www.github.com/HomeXLabs/vault-aws-authentication/compare/v1.0.0...v1.1.0) (2021-11-04)
 
 
