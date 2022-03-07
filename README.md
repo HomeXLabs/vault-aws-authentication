@@ -32,8 +32,8 @@ The `configure-aws-credentials` action will set environment variables containing
 The latest version of the action can be found on [the marketplace](https://github.com/marketplace/actions/vault-aws-authentication) or use @main.
 
 Add the following step to your workflow.
-```
 
+```
     - name: Vault-AWS Authentication
       uses: HomeXLabs/vault-aws-authentication@v1.1.2
       with:
