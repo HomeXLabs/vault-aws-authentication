@@ -1,40 +1,38 @@
-name: 'Vault AWS Authentication'
-description: 'Returns generated AWS credentials from Vault'
+name: "Vault AWS Authentication"
+description: "Returns generated AWS credentials from Vault"
 inputs:
   aws-region:
-    description: 'The AWS region'
+    description: "The AWS region"
     required: false
     default: us-east-1
   vault-address:
-    description: 'The address for your instance of Vault'
+    description: "The address for your instance of Vault"
     required: true
   vault-path:
-    description: 'The path in Vault where the secrets engine generates AWS credentials'
+    description: "The path in Vault where the secrets engine generates AWS credentials"
     required: true
   role-id:
-    description: 'The secret containing the role Id for the Vault App Role'
+    description: "The secret containing the role Id for the Vault App Role"
     required: true
   secret-id:
-    description: 'The secret containing secret Id for the Vault App Role'
+    description: "The secret containing secret Id for the Vault App Role"
     required: true
   role-to-assume-arn:
-    description: 'The ARN for the role wanting to be assumed in AWS'
+    description: "The ARN for the role wanting to be assumed in AWS"
     required: false
     default: null
   role-duration-seconds:
-    description: 'The duration in seconds that the role remains active (default: 15 minutes)'
+    description: "The duration in seconds that the role remains active (default: 15 minutes)"
     required: false
     default: 900
   role-skip-session-tagging:
-    description: 'Skip session tagging during role assumption'
+    description: "Skip session tagging during role assumption"
     required: false
     default: true
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - uses: actions/checkout@v2
-
     - name: Import Secrets
       uses: hashicorp/vault-action@v2.3.1
       id: secrets
@@ -76,7 +74,7 @@ runs:
       env:
         AWS_ACCESS_KEY_ID: ${{ steps.secrets.outputs.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ steps.secrets.outputs.AWS_SECRET_ACCESS_KEY }}
-        AWS_SESSION_TOKEN: ''
+        AWS_SESSION_TOKEN: ""
         AWS_REGION: ${{ inputs.aws-region }}
 
     - name: Configure AWS credentials
@@ -94,13 +92,13 @@ runs:
 
 outputs:
   aws-access-key-id:
-    description: 'AWS Access Key ID'
+    description: "AWS Access Key ID"
     value: ${{ steps.secrets.outputs.AWS_ACCESS_KEY_ID }}
   aws-secret-access-key:
-    description: 'AWS Secret Access Key'
+    description: "AWS Secret Access Key"
     value: ${{ steps.secrets.outputs.AWS_SECRET_ACCESS_KEY }}
   aws-region:
-    description: 'AWS Region'
+    description: "AWS Region"
     value: ${{ inputs.aws-region }}
 
 branding:
