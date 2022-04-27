@@ -1,5 +1,17 @@
 # Changelog
 
+### [1.1.4](https://www.github.com/HomeXLabs/vault-aws-authentication/compare/v1.1.3...v1.1.4) (2022-04-27)
+
+
+### Bug Fixes
+
+* remove git checkout ([#19](https://www.github.com/HomeXLabs/vault-aws-authentication/issues/19)) ([cb38c07](https://www.github.com/HomeXLabs/vault-aws-authentication/commit/cb38c07a5fcabcf1efbfce0bd3fc31931ca6277e))
+
+
+### Miscellaneous Chores
+
+* release 1.1.4 ([ab8a1f2](https://www.github.com/HomeXLabs/vault-aws-authentication/commit/ab8a1f25250fec1bad5b896f933fb1e896bf2a40))
+
 ## [1.1.3](https://www.github.com/HomeXLabs/vault-aws-authentication/compare/v1.1.2...v1.1.3) (2022-02-03)
 
 
