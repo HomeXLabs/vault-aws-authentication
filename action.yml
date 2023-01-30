@@ -33,6 +33,12 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Check if AWS CLI is installed
+      shell: bash
+      run: |
+        echo "Checking if AWS CLI is installed..."
+        aws --version
+
     - name: Import Secrets
       uses: hashicorp/vault-action@v2.3.1
       id: secrets
