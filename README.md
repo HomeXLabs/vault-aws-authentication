@@ -1,13 +1,13 @@
 # HomeX Vault-AWS Action
 
-This repository contains a github action that authenticates into Vault using an App Role to return generated AWS credentials and set the profile in the environment for AWS CLI/SDKs to use. 
+This repository contains a github action that authenticates into Vault using an App Role to return generated AWS credentials and set the profile in the environment for AWS CLI/SDKs to use.
 
-## Prerequisites 
+## Prerequisites
 
 1. Vault AWS App Role is set up with the account and role you will be assuming when using this action.
 2. AWS secrets engine is set up to generate credentials against the specified role.
 3. Role/secret id are added as secrets to the repository where this action will be used. Make sure you use the role/secret id specific to the App Role being used for your project (E.g. `${{ secrets.<project_name>_VAULT_ROLE_ID }}`)
-
+4. The CI container this action will run in should have the [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)(`ubuntu-latest` and `node` images have AWS installed by default).
 
 ## Inputs
 
@@ -21,7 +21,6 @@ This repository contains a github action that authenticates into Vault using an 
 | role-to-assume-arn | ✘ | The ARN for the role wanting to be assumed in AWS | `null` |
 | role-duration-seconds | ✘ | The duration in seconds that the role remains active (default: 15 minutes) | `900` |
 | role-skip-session-tagging | ✘ | Skip session tagging during role assumption | `true` |
-
 
 ## Results
 
