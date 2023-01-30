@@ -7,7 +7,7 @@ This repository contains a github action that authenticates into Vault using an 
 1. Vault AWS App Role is set up with the account and role you will be assuming when using this action.
 2. AWS secrets engine is set up to generate credentials against the specified role.
 3. Role/secret id are added as secrets to the repository where this action will be used. Make sure you use the role/secret id specific to the App Role being used for your project (E.g. `${{ secrets.<project_name>_VAULT_ROLE_ID }}`)
-4. The CI container this action will run in should have the [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+4. The CI container this action will run in should have the [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)(`ubuntu-latest` and `node` images have AWS installed by default).
 
 ## Inputs
 
