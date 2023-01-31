@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/HomeXLabs/vault-aws-authentication/compare/v1.1.4...v1.2.0) (2023-01-31)
+
+
+### Features
+
+* add check if aws cli is installed ([#22](https://github.com/HomeXLabs/vault-aws-authentication/issues/22)) ([ca52674](https://github.com/HomeXLabs/vault-aws-authentication/commit/ca5267414b4b0de62ceda1e9b58b7de3ebcbcf4a))
+
 ### [1.1.4](https://github.com/HomeXLabs/vault-aws-authentication/compare/v1.1.3...v1.1.4) (2022-04-27)
 
 
